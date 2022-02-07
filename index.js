@@ -1,71 +1,72 @@
-const Manager = require('./lib/manager');
-const Engineer = require('./lib/engineer');
-const Intern = require('./lib/intern');
+const inquirer = require("inquirer")
+const { prompts, formatData, pageTemplate } = require("./data")
+const fs = require("fs")
 
-const inquirer = require('inquirer');
-const fs = require('fs');
-const path = require('path');
+function main() {
+  // messages to direct user between prompts
+  const messages = {
+    welcome: `
+      ==============================================
+                  TEAM PROFILE GENERATOR
+      ==============================================
+              Please follow the prompts below to  
+              generate a new team profile page
+      ==============================================
+        `,
+    employeeAdded: `
+      ==============================================
+        This employee has been added to your team!          
+      ==============================================
+       Please answer the questions below to add the
+                next employee to your team            
+      ==============================================
+        `,
+    pageGenerated: `
+      ==============================================
+        Your team has been successfully generated.          
+      ==============================================
+         Check the dist folder of this repository
+        for the index.html file to view your page.            
+      ==============================================
+        `,
+  }
 
-const output = path.resolve(__dirname, "output", "team.html");
+  // welcome message
+  console.log(messages.welcome)
 
-const renderTeam = require("./lib/generateHTML");
-const { exit } = require('process');
+  // manager questions
+  return inquirer
+    .prompt(prompts.manager)
+    .then(function otherEmployeesPrompt(managerData) {
+      // employee added message
+      console.log(messages.employeeAdded)
 
-const teamMembers = [];
+      // make sure there is an array to store data for other employees
+      managerData.otherEmployees ? 0 : (managerData.otherEmployees = [])
 
-const membersID = [];
+      // other employee questions (recursive)
+      return inquirer
+        .prompt(prompts.otherEmployees)
+        .then(employeeData => {
+          // add each individual employee to otherEmployees array on managerData
+          managerData.otherEmployees.push(employeeData)
 
-
-function start(){
-    console.log('Welcome to your company employee roaster');
-
-    inquirer.prompt([
-        {
-            type: 'list',
-            name:'createTeam',
-            message:'what would you like to do today?',
-            choices:['create a team member', 'exit']
-
-        }
-
-    ]).then(choice => {
-        switch (choice.createTeam) {
-            case 'create a team member':
-                createTeamMember();
-                break;
-            case 'exit':
-                process.exit();
-                break;
-            default:
-                break;
-        }
-
-    })
-
-    function createTeamMember(){
-
-    }
-
-    function createManager(){
-        inquirer.prompt([
-            {
-                type:'input',
-                name:'managerName',
-                message:'Whatis the manager name?'
-            },
-            {
-                type:'input',
-                name:'managerID',
-                message:'Whatis the manager id?'
-            }
-        ]).then(data => {
-            let manager = new Manager(data.managerName, data.managerID);
-
-            teamMembers.push(manager);
-            membersID.push(data.managerID)
-            createTeamMember()
+          // either continue or format answer data into Employee objects
+          return employeeData.nextStep === "Yes, add another employee"
+            ? otherEmployeesPrompt(managerData)
+            : formatData(managerData)
         })
-    }
+        .then(formattedData => {
+          // generate html string
+          const html = pageTemplate(formattedData)
+
+          // use string to write index.html file and send to dist folder!
+          fs.writeFile("./dist/index.html", html, err => {
+            return err ? console.log(err) : console.log(messages.pageGenerated)
+          })
+        })
+        .catch(err => "")
+    })
 }
 
-start()
+main()
