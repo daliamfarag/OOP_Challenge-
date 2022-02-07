@@ -66,18 +66,6 @@ npm start       <!-- node index will also work -->
 
 ---
 
-## Demo Video
-
-<a href="" target="_blank">htt</a>
-
----
-
-## Sample Page
-
-<img src="./sample/screenshot.png" alt="screenshot of sample page generated with the app">
-
----
-
 ## Acceptance Criteria
 
 ```
