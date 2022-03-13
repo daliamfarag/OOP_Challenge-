@@ -70,8 +70,7 @@ npm start       <!-- node index will also work -->
 
 ## Demo Video
 
-<a href="https://youtu.be/8Ug21kPRifg"> </a>
-
+<a href="https://youtu.be/8Ug21kPRifg" target="_blank">Video Click Here</a>
 ---
 
 ## Sample Page
