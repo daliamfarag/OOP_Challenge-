@@ -1,28 +1,37 @@
 {
-  "name": "oop_challenge-",
+  "name": "team-profile-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "CLI built with Inquirer that records user input and dynamically writes an index.html fie to the dist folder.",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daliamfarag/OOP_Challenge-.git"
+    "url": "git+https://github.com/daliamfarag/OOP_TeamProfileGenerator-"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "CLI",
+    "filesystem",
+    "OOP",
+    "inquirer",
+    "jest",
+    "ES6-classes"
+  ],
+  "author": "Dalia Farag",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/daliamfarag/OOP_Challenge-/issues"
+    "url": "https://github.com/daliamfarag88/OOP-CHALLENGE-team-profile-generator/issues"
   },
-  "homepage": "https://github.com/daliamfarag/OOP_Challenge-#readme",
+  "homepage": "https://github.com/daliamfarag88/OOP-CHALLENGE-team-profile-generator",
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "inquirer": "^8.2.0",
-    "path": "^0.12.7"
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
   }
 }

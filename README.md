@@ -1,5 +1,4 @@
-# OOP_Challenge-
-## Team Profile Generator
+# Team Profile Generator
 
 ## Table of Contents
 
@@ -20,7 +19,7 @@ __tests__/              <!-- jest unit tests -->
   Intern.test.js
   Manager.test.js
 
-main/                   <!-- rendered output (html), stylesheet -->
+dist/                   <!-- rendered output (html), stylesheet -->
   index.html
   style.css
 
@@ -33,14 +32,17 @@ lib/                    <!-- classes -->
 
 node_modules/           <!-- dependencies -->
 
+sample                  <!-- sample html file -->
+  index.html
+  screenshot.png
 
-data/                    <!-- modular js logic -->
+src/                    <!-- modular js logic -->
   format-data.js
   index.js
   page-template.js
   prompts.js
 
-
+.gitignore
 index.js                // entry point & file generation
 package-lock.json
 package.json
@@ -63,6 +65,18 @@ npm install
 
 npm start       <!-- node index will also work -->
 ```
+
+---
+
+## Demo Video
+
+<a href="https://youtu.be/8Ug21kPRifg" target="_blank"> </a>
+
+---
+
+## Sample Page
+
+<img src="./assets/OOP_Team_Generator_Page.png" alt="screenshot of sample page generated with the app">
 
 ---
 

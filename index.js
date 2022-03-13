@@ -1,5 +1,5 @@
 const inquirer = require("inquirer")
-const { prompts, formatData, pageTemplate } = require("./data")
+const { prompts, formatData, pageTemplate } = require("./src")
 const fs = require("fs")
 
 function main() {
