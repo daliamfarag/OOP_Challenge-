@@ -70,13 +70,13 @@ npm start       <!-- node index will also work -->
 
 ## Demo Video
 
-<a href="https://youtu.be/8Ug21kPRifg" target="_blank"> </a>
+<a href="https://youtu.be/8Ug21kPRifg"> </a>
 
 ---
 
 ## Sample Page
 
-<img src="./assets/OOP_Team_Generator_Page.png" alt="screenshot of sample page generated with the app">
+<img src="/dist/assets/OOP_Team_Generator_Page.png" alt="screenshot of sample page generated with the app">
 
 ---
 
